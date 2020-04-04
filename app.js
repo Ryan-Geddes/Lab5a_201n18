@@ -100,15 +100,17 @@ figure out how to do this. However, you may continue to use the + operator for s
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumArray() function and see if the test passes.*/
 
 // Write your code here
-var testArray = [2, 3, 4]; //eslint-disable-line
+var testArray = [2, 3, 4];
 
-function sumArray(sumArr) { //eslint-disable-line
-
+function sumArray(sumArr) { 
+    var sum = sumAndMultiply(sumArr[0],sumArr[1],sumArr[2]);
+    var answerArr = [sum[0], sumArr + ' was passed in as an array of numbers, and ' + sum[0] + ' is their sum.'];
+    return (answerArr);
 }
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
