@@ -65,19 +65,22 @@ uncomment the call for the testSumAndMultiply() function and see if the test pas
 
 // Write your code here
 function sumAndMultiply(a, b, c) { 
-    var x = sum(a,b);
-    var y = sum(x[0],c);
-    var q = multiply(a,b)
-    var w = multiply(q[0],c)
-    var answerArr = 
-        [y[0], 
-        w[0], 
-        a + ' and ' + b + ' and ' + c + ' sum to ' + y[0] + '.', 
+    var sumAndMultiply = [a,b,c];
+    var totalSum = 0;
+    for (var i=0; i < sumAndMultiply.length; i ++){
+        totalSum = sum(totalSum, sumAndMultiply[i])[0];
+    }
+    var q = multiply(a,b);
+    var w = multiply(q[0],c);
+    var answerArr = [ 
+        totalSum,
+        w[0],
+        a + ' and ' + b + ' and ' + c + ' sum to ' + totalSum + '.', 
         'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + w[0] + '.'];
     return answerArr;
 
 }
-sumAndMultiply();
+sumAndMultiply(4,7,5);
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
 testSumAndMultiply(4,7,5);
@@ -107,6 +110,7 @@ function sumArray(sumArr) {
     var answerArr = [sum[0], sumArr + ' was passed in as an array of numbers, and ' + sum[0] + ' is their sum.'];
     return (answerArr);
 }
+
 
 // Here is the test for sumArray(); uncomment it to run it
 
@@ -151,24 +155,42 @@ testMultiplyArray(testArray);
 
 /////////////////////////////////////
 /* STRETCH GOAL: Problem 6
-Write a function called multiplyAnyArray() that takes an array of numbers of any length as its argument and returns an array whose first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and concatenates a message using the arguments that were passed into the function:
+Write a function called multiplyAnyArray() that takes an array of numbers of any length as its 
+argument and returns an array whose first element is the product of those numbers, and the second 
+element is a string that EXACTLY follows this example and concatenates a message using the arguments 
+that were passed into the function:
 
 "The numbers 1,2,3,4,5 have a product of 120."
 
-IMPORTANT DETAIL: You may not use the arithmetic operator * in this function. To do multiplication, use your multiply() function that you've already created. You're going to have to be resourceful to figure out how to do this. However, you may continue to use the + operator for string concatenation.
+IMPORTANT DETAIL: You may not use the arithmetic operator * in this function. To do multiplication, 
+use your multiply() function that you've already created. You're going to have to be resourceful to 
+figure out how to do this. However, you may continue to use the + operator for string concatenation.
 
 This function should be dynamic, accepting an array of any length.
 
-Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testMultiplyAnyArray() function and see if the test passes.*/
+Test this function by hand in the console to get it working, and when you think it is finished, 
+uncomment the call for the testMultiplyAnyArray() function and see if the test passes.*/
 
 // Write your code here
-var testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
+var testDynamicArray = [1,2,3,4,5]; 
 
-function multiplyAnyArray(dynamicArray) { //eslint-disable-line
-
+function multiplyAnyArray(dynamicArray) { 
+    var totalSum = 1;
+    for (var i=0; i < dynamicArray.length; i++){
+        totalSum = multiply(totalSum, dynamicArray[i])[0];
+        console.log(totalSum)
+    }
+    var answerArr = [totalSum, 'The numbers ' + dynamicArray + ' have a product of ' + totalSum +  '.']
+    return answerArr;
 }
 
+multiplyAnyArray(testDynamicArray)
+//multiply dynamic array index 0 w index 1 = a
+//multiply a w index 2 = a
+//multiply a w index 3 = a
+
+
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyAnyArray(testDynamicArray);
+testMultiplyAnyArray(testDynamicArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
